@@ -1,0 +1,10 @@
+...,...
+"Browse Files...","浏览文件… "
+Complete,完成
+"Maximum allowed file size for upload is",上传文件大小不能超过
+"Please check your server PHP settings.","请检查你的服务器PHP设置。 "
+Remove,移除
+"There are files that were selected but not uploaded yet. After switching to another tab your selections will be lost. Do you wish to continue ?","文件没有上传！切换到另一个选项卡后你的操作将丢失。 你确定继续吗? 
+"
+"Upload Files",上传文件
+Uploading...,上传中……
