@@ -3202,7 +3202,7 @@ body {
   margin-right: 10px;
 }
 .header-language-background .welcome-msg {
-  float: right;
+  float: right;    padding: 10px;
 }
 
 .page-header-container .store-language-container {
@@ -3270,7 +3270,7 @@ body {
     display: none;
   }
   .logo .large {
-    display: block;
+    display: block;width: 70px;
   }
 }
 /* ============================================ *

@@ -30,8 +30,9 @@
 
 <div class="header-language-background">
     <div class="header-language-container">
-        <div class="store-language-container">
-            <?php echo $this->getChildHtml('store_language') ?>
+        <div class="store-language-container" style="display:inline-block;">
+            <?php //echo $this->getChildHtml('store_language') ?>
+            <img src="<?php echo $this->getSkinUrl('images/media/logo_small_txt.png');?>">
         </div>
 
         <?php echo $this->getChildHtml('currency_switcher') ?>
