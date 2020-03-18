@@ -120,6 +120,7 @@ class Mage_Adminhtml_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_Wid
             $collection->joinAttribute('visibility', 'catalog_product/visibility', 'entity_id', null, 'inner');
         }
 
+        //$collection->getSelect()->group('e.entity_id');
         $this->setCollection($collection);
 
         parent::_prepareCollection();
@@ -215,14 +216,15 @@ class Mage_Adminhtml_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_Wid
             ));
         }
 
-        $this->addColumn('visibility',
+        $this->addColumn('category',
             array(
-                'header'=> Mage::helper('catalog')->__('Visibility'),
-                'width' => '70px',
-                'index' => 'visibility',
-                'type'  => 'options',
-                'options' => Mage::getModel('catalog/product_visibility')->getOptionArray(),
-        ));
+                'header' => Mage::helper('catalog')->__('Category'),
+                'filter_condition_callback' => array($this, '_filterStatusCallback'),
+                'sortable' => false,
+                'type'      => 'options',
+                'options'   => $this->getAllOptions(),
+                'renderer' => 'adminhtml/catalog_renderer_category',
+            ));
 
         $this->addColumn('status',
             array(
@@ -323,5 +325,45 @@ class Mage_Adminhtml_Block_Catalog_Product_Grid extends Mage_Adminhtml_Block_Wid
             'store'=>$this->getRequest()->getParam('store'),
             'id'=>$row->getId())
         );
+    }
+
+    public function getAllOptions()
+    {
+        //$options = Mage::getSingleton('core/session')->getCategoryOptions();
+        //if($options) return $options;
+
+        $options = array();
+        $collection = Mage::getModel('catalog/category')
+                ->getCollection()
+                ->addAttributeToSelect(array('entity_id', 'name'))
+                ->addAttributeToFilter('is_active', 1)
+                ->setOrder('position', 'desc');
+
+        foreach ($collection as $category) {
+           if($category->getId() == 2) continue;
+
+           $pathIds = $category->getPathIds();
+           unset($pathIds[0], $pathIds[1]);
+
+           $result = array();
+           foreach ($pathIds as $id) {
+                $parentCat = Mage::getModel('catalog/category')->load($id);
+                $result[] = $parentCat->getName();
+           }
+           //array_unshift($result, $category->getId()); // add id before name
+           $options[$category->getId()] = join(" -> ", $result);
+        }
+        ksort($options);
+        Mage::getSingleton('core/session')->setCategoryOptions($options);
+
+        return $options;
+    }
+
+
+    protected function _filterStatusCallback($collection, $column)
+    {
+        $value = $column->getFilter()->getValue();
+        $collection->getSelect()->where("(select count(product_id) from catalog_category_product where category_id=$value and product_id=e.entity_id) > 0");
+        return $this;
     }
 }

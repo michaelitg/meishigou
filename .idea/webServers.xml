@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="4fa77c97-f06a-4605-a484-0346ee871067" name="ftp.meishigou.com.au" url="http://www.meishigou.com.au">
+        <fileTransfer host="ftp.meishigou.com.au" port="21" rootFolder="/var/www/html">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
