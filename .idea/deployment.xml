@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="ftp.meishigou.com.au">
+  <component name="PublishConfigData" autoUpload="Always" serverName="ftp.meishigou.com.au" uploadOnCheckin="4fa77c97-f06a-4605-a484-0346ee871067">
     <serverData>
       <paths name="ftp.meishigou.com.au">
         <serverdata>
@@ -10,6 +10,7 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="ftp.meishigou.com.au" />
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
