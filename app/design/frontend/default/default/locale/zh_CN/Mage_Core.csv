@@ -200,7 +200,7 @@ Locale,区域
 "Model collection resource name is not defined.",模块集合资源名未定义。
 "Module ""%1$s"" cannot depend on ""%2$s"".","模块 ""%1$s"" 无法依存于""%2$s""。"
 "Module ""%1$s"" requires module ""%2$s"".","模块 ""%1$s"" 需要模块 ""%2$s""。"
-Name,姓名
+Name,名称
 "New Design Change",新设计变动
 "New Store",新店铺
 "New Store View",新店铺视图
