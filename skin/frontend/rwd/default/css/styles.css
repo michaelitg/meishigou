@@ -3183,7 +3183,7 @@ body {
  * ============================================ */
 .header-language-background {
   padding: 10px;
-  background-color: #7c5c8c;
+  background-color: #cc6699;
   text-transform: uppercase;
 }
 .header-language-background .header-language-container {
@@ -3199,7 +3199,7 @@ body {
 .header-language-background .form-language,
 .header-language-background .currency-switcher {
   float: left;
-  margin-right: 10px;
+  margin-right: 10px; margin-top: 9px;
 }
 .header-language-background .welcome-msg {
   float: right;    padding: 10px;
@@ -3216,7 +3216,11 @@ body {
 .page-header-container .store-language-container select {
   max-width: 100%;
 }
-
+@media only screen and (max-width: 770px) {
+  .page-header-container {
+    background-color: #cc6699
+  }
+}
 @media only screen and (max-width: 479px) {
   .page-header-container .store-language-container {
     padding-top: 8px;
