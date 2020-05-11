@@ -1,0 +1,18 @@
+[2018-11-23 16:24:05][debug] 
+GET:https://g.omipay.com.cn/omipay/api/v2/MakeJSAPIOrder?currency=AUD&order_name=test+goods&amount=100&out_order_no=1542961445543muwyicln&redirect_url=http://www.omipay.com.cn&timestamp=1542961445543&nonce_str=qucg57m5m8genqu6q05obxbs7fmz8n&sign=C363299FE03E6D348628F8356B9EA5FD
+
+[2018-11-23 16:24:05][info] 
+DATA:{"error_code":"PARAMETER_INVALID","error_msg":"参数错误","return_code":"FAIL"}
+
+[2018-11-23 16:24:09][debug] 
+GET:https://g.omipay.com.cn/omipay/api/v2/MakeQROrder?platform=WECHATPAY&currency=AUD&order_name=Test_Goods&amount=1&out_order_no=15429614493579dlpzkjn&timestamp=1542961449358&nonce_str=ebvffp4i01pfuo17bhb6ns81733xse&sign=0AB2B8130AA621782139032F25CE925A
+
+[2018-11-23 16:24:09][info] 
+DATA:{"error_code":"PARAMETER_INVALID","error_msg":"参数错误","return_code":"FAIL"}
+
+[2018-11-23 16:24:15][debug] 
+GET:https://g.omipay.com.cn/omipay/api/v2/MakeJSAPIOrder?currency=AUD&order_name=test+goods&amount=1&out_order_no=1542961455111alyuhzgf&show_pc_pay_url=1&timestamp=1542961455111&nonce_str=eaj88oe03w9dx5yt770tmi027jlonr&sign=8567C891EB3621F13A1499E6FF5EEBBE
+
+[2018-11-23 16:24:15][info] 
+DATA:{"error_code":"PARAMETER_INVALID","error_msg":"参数错误","return_code":"FAIL"}
+
