@@ -1,4 +1,7 @@
 <?php
+require_once "lib/OmiPayApi.php";
+require_once "common/Common.class.php";
+
 class Mipay_BasicPayment_Model_Payment extends Mage_Payment_Model_Method_Abstract{
 	// Code to match up with the groups node in default.xml
 	protected $_code = "mipay_pay";
@@ -12,8 +15,32 @@ class Mipay_BasicPayment_Model_Payment extends Mage_Payment_Model_Method_Abstrac
     protected $_canUseInternal          = true;
     protected $_canUseForMultishipping  = false;
 
+    public function getRedirectUrl(){
+        $type = "web";
+        // 调用onile_order支付
+        $input = new MakeOnlineOrderQueryData();
+        $time_no = OmiData::getMillisecondPublic();  // 获取毫秒的时间戳
+        $out_order = OmiData::getNonceStrPublic(8);  // 获得8位随机字符串， 时间戳+8位随机字符可生成外部订单号
+
+        $input->setMerchantNo(OmiPayConfig::merchant_no);
+        $input->setSercretKey(OmiPayConfig::merchant_key);
+
+        $input->setNotifyUrl(OmiPayConfig::notify_url); // 设置支付完成通知地址
+        $input->setCurrency("AUD");     // 设置金额
+        $input->setOrderName(urlencode("测试订单"));   // 设置产品名字
+        $input->setAmount('1');         // 设置支付金额
+        $input->setOutOrderNo($time_no.$out_order);     // 设置外部订单编号
+        $input->setPayType($type);        // 设置支付类型
+        $input->setReturnUrl("http://www.meishigou.com.au/mipay/payment/response");           //  设置交易成功同步返回地址
+
+        // 调用接口支付下单
+        $result = OmiPayApi::onlineOrder($input);
+        Mage::log($result);
+        return $result['pay_url'];
+    }
+
     public function getOrderPlaceRedirectUrl() {
-        return Mage::getUrl('mygateway/payment/redirect', array('_secure' => false));
+        return Mage::getUrl('mipay/payment/redirect', array('_secure' => false));
     }
 	
 	// Use this to set whether the payment method should be available in only certain circumstances

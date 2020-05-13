@@ -52,7 +52,7 @@
 			<mipay_pay>
 				<!-- used in determining whether to display the payment type -->
 				<active>1</active>
-				<title>MiPay</title>
+				<title>Omipay(支付宝)</title>
 				<order_status>pending</order_status>
 				<!-- the model which gets instantiated for this payment type -->
 				<model>mipay_basicpayment/payment</model>
@@ -62,19 +62,19 @@
 				<!-- Only show this order type for orders with the values between the following -->
 				<min_order_total>1</min_order_total>
 				<max_order_total>6000</max_order_total>
-				<message>Thank you for using MiPay!</message>
+				<message>欢迎使用Omipay(支付宝)!</message>
 			</mipay_pay>
 		</payment>
 	</default>
 	<frontend>
 		<routers>
-			<mygateway>
+			<mipay>
 				<use>standard</use>
 				<args>
 					<module>Mipay_BasicPayment</module>
-					<frontName>mygateway</frontName>
+					<frontName>mipay</frontName>
 				</args>
-			</mygateway>
+			</mipay>
 		</routers>
 	</frontend>
 </config>

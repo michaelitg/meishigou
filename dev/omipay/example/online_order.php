@@ -26,7 +26,7 @@ require_once "../lib/OmiPayApi.php";
 require_once "../common/Common.class.php";
 
 if(isset($_GET['type']) && $_GET['type'] != ''){
-    $type = $_GET['type'];
+    $type = $_GET['type']; //web or wap
 }else{
     exit(json_encode(array("FAIL"=>"type is not correct")));
 }
