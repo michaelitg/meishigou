@@ -31,7 +31,7 @@ class OmiPayConfig
     const merchant_no = "0012942423";   // 设置商户号，不要加M  如 "000034"
     const merchant_key = "f539fe1b0e7c48429d448cc76dd3d9d3";   // 商户密钥
 
-    const notify_url = "http://www.meishigou.com.au/dev/omipay/example/notify.php";  // 支付完成通知地址
+    const notify_url = "http://www.meishigou.com.au/mipay/payment/response";  // 支付完成通知地址
 
     const DOMAIN_TYPE = "AU";   // 默认为CN / AU
 
