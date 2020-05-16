@@ -59,10 +59,7 @@
 				<allowspecific>0</allowspecific>
 				<payment_action>sale</payment_action>
 				<sort_order>1</sort_order>
-				<!-- Only show this order type for orders with the values between the following -->
-				<min_order_total>1</min_order_total>
-				<max_order_total>6000</max_order_total>
-				<message>欢迎使用Omipay(支付宝)!</message>
+				<message>下单时，您会被重定向到支付宝付款!</message>
 			</mipay_pay>
 		</payment>
 	</default>

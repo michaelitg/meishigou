@@ -18,15 +18,18 @@ class Mipay_BasicPayment_PaymentController extends Mage_Core_Controller_Front_Ac
 	}
 	
 	// The response action is triggered when your gateway sends back a response after processing the customer's payment
-	public function responseAction() {
+	//http://www.meishigou.com.au/mipay/payment/response?transactionId=TR2005160012942423005653&time=2020-05-16+17:24:12&amount=0.02AUD&company=AI%2bAMAZON%2bONLINE&product=%E8%AE%A2%E5%8D%95-600000006
+    public function responseAction() {
         Mage::log('-----------mipay get response-----------------------');
         $data = $this->getRequest()->getParams();
         Mage::log($data);
-		$validated = true; //check if the payment is ok from alipay
+        if(count($data) == 0 || !isset($data['transactionId'])) return;
+
+		$validated = true; //($data['return_code'] == 'SUCCESS'); //check if the payment is ok from alipay
 		if($validated) {
             $order = Mage::getModel('sales/order')->loadByIncrementId(Mage::getSingleton('checkout/session')->getLastRealOrderId());
             if ($order->getId()) {
-                $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, 'OMipay has authorized the payment.');
+                $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, 'OMipay payment processed successfully, transaction id='.$data['transactionId'].'.');
                 $order->sendNewOrderEmail();
                 $order->setEmailSent(true);
                 $order->save();
@@ -42,7 +45,13 @@ class Mipay_BasicPayment_PaymentController extends Mage_Core_Controller_Front_Ac
 				Mage_Core_Controller_Varien_Action::_redirect('checkout/onepage/failure', array('_secure'=>true));
 		}
 	}
-	
+
+    public function notifyAction() {
+        Mage::log('-----------mipay get notify-----------------------');
+        $data = $this->getRequest()->getParams();
+        Mage::log($data);
+    }
+
 	// The cancel action is triggered when an order is to be cancelled
 	public function cancelAction() {
         if (Mage::getSingleton('checkout/session')->getLastRealOrderId()) {

@@ -1,10 +1,11 @@
 <?php
 // Retrieve order
-//$_order = new Mage_Sales_Model_Order();
-//$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
-//$_order->loadByIncrementId($orderId);
-$url = Mage::getModel('mipay_basicpayment/payment')->getRedirectUrl();
+$_order = new Mage_Sales_Model_Order();
+$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+$_order->loadByIncrementId($orderId);
+$url = Mage::getModel('mipay_basicpayment/payment')->getRedirectUrl($_order);
 ?>
+<p>正在跳转到支付宝......</p>
 <script type="text/javascript">
     window.location.href='<?php echo $url?>';
 </script>
